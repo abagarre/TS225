@@ -1,0 +1,15 @@
+ ETAPE 1
+---------
+1 - Prendre 4 points sur une images
+2 - Prendre leurs correspondants sur la 2e image
+3 - Appliquer l'homographie :
+	- 1er transport : remplacer le contenu du quadrangle par un autre contenu (projection)
+	- 2e transport : récupérer les pixels du quandrangle et former unie nouvelle image (extraction)
+
+Transformations : 
+	- Rotation : M2 - C1 + K(M1 - C1)
+	- Translation : M2 = M1 + T
+	- Changement échelle : M2 - alpha*M1
+	- Homographie : M2 = H*M1
+
+Suite au système régissant les valeurs de x2 et y2, on déplace tous les h du même côté pour obtenir l'équation AX = B => X = A^(-1)*B (= A/B)
