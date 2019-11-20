@@ -1,6 +1,15 @@
-function [x2, y2] = projection(H, x1, y1)
+function [IMG] = projection(Q, R, H, IMG, IMG2)
 
-M2 = H*[x1;y1;1];
+XA = floor(Q(:,1));
+YA = floor(Q(:,2));
+for x=min(XA):max(XA)
+	for y=min(YA):max(YA)
+		[x2, y2] = transformation(H, x, y);
+		if contiens(R, x2, y2)
+			IMG(y,x) = IMG2(y2,x2);
+		end
+	end
+end
 
-x2 = floor(M2(1)/M2(3));
-y2 = floor(M2(2)/M2(3));
+end
+
