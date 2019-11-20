@@ -3,6 +3,8 @@ clear ; clc ; close all ;
 IMG1 = double(imread("../../images/monument.bmp"));
 IMG2 = double(imread("../../images/robot.bmp"));
 
+IMG2 = imresize(IMG2, size(IMG2));
+
 [h1, w1] = size(IMG1);
 [h2, w2] = size(IMG2);
 

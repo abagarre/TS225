@@ -1,25 +1,4 @@
-function [H, Q] = homographie(IMG1, IMG2)
-
-figure(1), imagesc(IMG1), colormap(gray);
-
-[XA, YA] = ginput(4)
-floor(XA); floor(YA);
-
-figure(2), imagesc(IMG2), colormap(gray);
-
-[XB, YB] = ginput(4);
-floor(XB); floor(YB);
-
-% Transformation en rectangle
-XB(1) = min(XB(1), XB(4));
-XB(4) = XB(1);
-XB(2) = min(XB(2), XB(3));
-XB(3) = XB(2);
-YB(1) = min(YB(1), YB(2));
-YB(2) = YB(1);
-YB(3) = min(YB(3), YB(4));
-YB(4) = YB(3);
-
+function [H] = homographie(XA, YA, XB, YB)
 
 A = [XA(1) YA(1) 1 0 0 0 -XA(1)*XB(1) -YA(1)*XB(1);...
 	0 0 0 XA(1) YA(1) 1 -XA(1)*YB(1) -YA(1)*YB(1);...
@@ -35,7 +14,5 @@ B = [XB(1); YB(1); XB(2); YB(2); XB(3); YB(3); XB(4); YB(4)];
 X = A\B;
 
 H = [X(1) X(2) X(3) ; X(4) X(5) X(6) ; X(7) X(8) 1];
-
-close(1), close(2);
 
 Q = [XB YB];
