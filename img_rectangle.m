@@ -1,6 +1,6 @@
-function [IMG] = img_rectangle(width,height)
+function [IMG] = img_rectangle(width,height,i)
 
-IMG = zeros(width, height);
+IMG = ones(width, height).*i;
 
 end
 

@@ -2,7 +2,7 @@ clear ; clc ; close all ;
 
 IMG1 = double(imread("../../images/monument.bmp"));
 IMG2 = double(imread("../../images/lena.bmp"));
-IMG3 = img_rectangle(200,200);
+IMG3 = img_rectangle(500,500,0);
 
 [h1, w1] = size(IMG1);
 [h2, w2] = size(IMG2);
