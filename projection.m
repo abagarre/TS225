@@ -1,7 +1,7 @@
 function [IMG1] = projection(Q, R, H, IMG1, IMG2)
 
-XA = floor(Q(:,1))
-YA = floor(Q(:,2))
+XA = floor(Q(:,1));
+YA = floor(Q(:,2));
 for x=min(XA):max(XA)
 	for y=min(YA):max(YA)
 		[x2, y2] = transformation(H, x, y);

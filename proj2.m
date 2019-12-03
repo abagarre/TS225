@@ -7,28 +7,31 @@
 
 clear ; clc ; close all ;
 
-IMG1 = double(imread("../../images/monument.bmp"));
-IMG2 = double(imread("../../images/monument2.bmp"));
+IMG1 = double(imread("images/mos1.bmp"));
+IMG2 = double(imread("images/mos20.bmp"));
 [h1, w1] = size(IMG1);
 [h2, w2] = size(IMG2);
 
-IMG3 = IMG2.*0;
-[h3, w3] = size(IMG3);
+[IMG1, Mask1, box1] = mib(IMG1);
+[IMG2, Mask2, box2] = mib(IMG2);
 
 figure(1), imagesc(IMG1), colormap(gray);
 [XA, YA] = ginput(4);
-Q = [XA YA];
 close(1);
 
 figure(2), imagesc(IMG2), colormap(gray);
 [XB, YB] = ginput(4);
-R = [XB YB];
 close(2);
 
-Coor_IMG1 = [1 1; w1 1; w1 h1; 1 h1];
-Coor_IMG3 = [1 1; w3 1; w3 h3; 1 h3];
 
 %% PROJECTION
+
+% calcul des homographies dans les deux sens differents
+
 H1 = homographie(XA, YA, XB, YB);
-IMG4 = projection(Coor_IMG3, Coor_IMG1, H1, IMG3, IMG2);
-figure, imagesc(IMG4), colormap(gray);
+H2 = homographie(XB, YB, XA, YA);
+
+[IMG11, Mask11, box11] = mib2(IMG1, Mask1, box1, H1);
+% 
+% [IMG, Mask, box] = fusion(IMG11, Mask11, box11, IMG2, Mask2, box2);
+
