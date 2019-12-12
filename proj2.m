@@ -7,13 +7,11 @@
 
 clear ; clc ; close all ;
 
-IMG1 = double(imread("../../images/monument.bmp"));
-IMG2 = double(imread("../../images/monument2.bmp"));
-[h1, w1] = size(IMG1);
-[h2, w2] = size(IMG2);
+IMG1 = double(imread("images/monument.bmp"));
+IMG2 = double(imread("images/monument2.bmp"));
 
-IMG3 = IMG2.*0;
-[h3, w3] = size(IMG3);
+MIB1 = mib(IMG1);
+MIB2 = mib(IMG2);
 
 figure(1), imagesc(IMG1), colormap(gray);
 [XA, YA] = ginput(4);
@@ -25,10 +23,10 @@ figure(2), imagesc(IMG2), colormap(gray);
 R = [XB YB];
 close(2);
 
-Coor_IMG1 = [1 1; w1 1; w1 h1; 1 h1];
-Coor_IMG3 = [1 1; w3 1; w3 h3; 1 h3];
-
 %% PROJECTION
 H1 = homographie(XA, YA, XB, YB);
-IMG4 = projection(Coor_IMG3, Coor_IMG1, H1, IMG3, IMG2);
-figure, imagesc(IMG4), colormap(gray);
+H2 = homographie(XB, YB, XA, YA);
+
+MIB3 = mib_homographie(MIB2, H1, H2);
+
+figure, imagesc(MIB3.image), colormap(gray);

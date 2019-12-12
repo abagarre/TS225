@@ -8,10 +8,13 @@ IMG3 = img_rectangle(500,500,0);
 [h2, w2] = size(IMG2);
 [h3, w3] = size(IMG3);
 
+
 figure(1), imagesc(IMG1), colormap(gray);
 [XA, YA] = ginput(4);
+hold on;
+plot([XA;XA(1)],[YA;YA(1)], 'r');
 Q = [XA YA];
-close(1);
+
 
 XB = [1 w2 w2 1];
 YB = [1 1 h2 h2];

@@ -13,3 +13,22 @@ Transformations :
 	- Homographie : M2 = H*M1
 
 Suite au système régissant les valeurs de x2 et y2, on déplace tous les h du même côté pour obtenir l'équation AX = B => X = A^(-1)*B (= A/B)
+
+ ETAPE 2
+---------
+Image I -> MIB = { MASQUE ; IMAGE ; BOITE ENGLOBANTE (2 paires de coordonées entières)}
+
+Initialement :
+	-> Masque = que des 1
+	-> Image = image de départ
+	-> Boite englobante = (1,1) (w,h) par ex
+
+
+Créer function [MIB2] = homography_apply(MIB1, H)
+
+	-> BE2 = homographie sur les 4 pts de la BE1
+
+Créer : function [MIB3] = fusion(MIB1, MIB2)
+
+	-> masque3 = 
+	-> BE3 = min et max de BE1 et BE2
