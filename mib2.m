@@ -38,6 +38,7 @@ for i = 1:W+1
         [x, y] = transformation(Homographie_inverse, i+Min_x-1, j+Min_y-1);
         if contiens([1 Box(3,1) Box(3,1) 1 1 1 Box(3,2) Box(3,2)], x, y)
 			Image_final(i,j) = Image(x,y);
+            Mask_final(i,j) = 1;
         end
     end
 end
