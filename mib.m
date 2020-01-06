@@ -1,6 +1,6 @@
 function[Image, Mask, Box] = mib(Image)
 
-[w,h] = size(Image);
-Mask = ones(w,h);
-Box = [1 1; 1 h; w h; w 1];
+[h,w] = size(Image);
+Mask = ones(h,w);
+Box = [1 1; h w];
 end

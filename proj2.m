@@ -16,16 +16,16 @@ IMG2 = double(imread("Dragon01.png"))/256;
 IMG1 = rgb2gray(IMG1);
 IMG2 = rgb2gray(IMG2);
 
-[IMG1, Mask1, box1] = mib(IMG1);
-[IMG2, Mask2, box2] = mib(IMG2);
+[IMG1, Mask1, Box1] = mib(IMG1);
+[IMG2, Mask2, Box2] = mib(IMG2);
 
-% figure(1), imagesc(IMG1), colormap(gray);
-% [XA, YA] = ginput(4);
-% close(1);
-% 
-% figure(2), imagesc(IMG2), colormap(gray);
-% [XB, YB] = ginput(4);
-% close(2);
+figure(1), imagesc(IMG1), colormap(gray);
+[XA, YA] = ginput(4);
+close(1);
+
+figure(2), imagesc(IMG2), colormap(gray);
+[XB, YB] = ginput(4);
+close(2);
 
 load("points.mat");
 
@@ -36,7 +36,10 @@ load("points.mat");
 H1 = homographie(XA, YA, XB, YB);
 H2 = homographie(XB, YB, XA, YA);
 
-[IMG11, Mask11, box11] = mib2(IMG1, Mask1, box1, H2, H1);
+[IMG3, Mask3, Box3] = mib2(IMG1, Mask1, Box1, H1);
 
-[IMG, Mask, box] = fusion(IMG11, Mask11, box11, IMG2, Mask2, box2);
+% figure, imagesc(IMG3), colormap(gray);
 
+[IMG4, Mask4, Box4] = fusion(IMG3, Mask3, Box3, IMG2, Mask2, Box2);
+
+figure, imagesc(IMG4), colormap(gray);
