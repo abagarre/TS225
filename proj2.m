@@ -7,27 +7,27 @@
 
 clear ; clc ; close all ;
 
-IMG1 = double(imread("Dragon02.png"))/256;
-IMG2 = double(imread("Dragon01.png"))/256;
+IMG2 = double(imread("images/mos21.bmp"))/256;
+IMG1 = double(imread("images/mos35.bmp"))/256;
 
 [h1, w1] = size(IMG1);
 [h2, w2] = size(IMG2);
 
-IMG1 = rgb2gray(IMG1);
-IMG2 = rgb2gray(IMG2);
+% IMG1 = rgb2gray(IMG1);
+% IMG2 = rgb2gray(IMG2);
 
 [IMG1, Mask1, Box1] = mib(IMG1);
 [IMG2, Mask2, Box2] = mib(IMG2);
 
-figure(1), imagesc(IMG1), colormap(gray);
-[XA, YA] = ginput(4);
-close(1);
+% figure(1), imagesc(IMG1), colormap(gray);
+% [XA, YA] = ginput(4);
+% close(1);
+% 
+% figure(2), imagesc(IMG2), colormap(gray);
+% [XB, YB] = ginput(4);
+% close(2);
 
-figure(2), imagesc(IMG2), colormap(gray);
-[XB, YB] = ginput(4);
-close(2);
-
-load("points.mat");
+load("mos.mat");
 
 %% PROJECTION
 
